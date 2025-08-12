@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.example.unit.beverage.Americano;
+import com.example.unit.beverage.Latte;
 import com.example.unit.order.Order;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
@@ -35,6 +36,17 @@ class CafeKioskTest {
 		cafeKiosk.add(americano);
 
 		assertThat(cafeKiosk.getBeverages().size()).isEqualTo(1);
+	}
+
+	@Test
+	void calculateTotalPrice() {
+		CafeKiosk cafeKiosk = new CafeKiosk();
+		cafeKiosk.add(new Americano());
+		cafeKiosk.add(new Latte());
+
+		int totalPrice = cafeKiosk.calculateTotalPrice();
+
+		assertThat(totalPrice).isEqualTo(7000);
 	}
 
 	@Test

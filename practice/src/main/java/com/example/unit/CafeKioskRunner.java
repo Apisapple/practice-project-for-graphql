@@ -6,22 +6,25 @@ import com.example.unit.beverage.Americano;
 import com.example.unit.beverage.Latte;
 import com.example.unit.order.Order;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class CafeKioskRunner {
 
 	public static void main(String[] args) {
 		CafeKiosk cafeKiosk = new CafeKiosk();
 		cafeKiosk.add(new Americano());
 
-		System.out.println(">>Added beverage: Americano");
+		log.info(">>Added beverage: Americano");
 
 		cafeKiosk.add(new Latte());
-		System.out.println(">>Added beverage: Latte");
+		log.info(">>Added beverage: Latte");
 
 		int totalPrice = cafeKiosk.calculateTotalPrice();
 
-		System.out.printf(">>Total price: %d", totalPrice);
+		log.info(">>Total price: {}", totalPrice);
 
 		Order order = cafeKiosk.createOrder(LocalDateTime.now());
-		System.out.println(">>Created order: " + order);
+		log.info(">>Created order: {}", order);
 	}
 }
