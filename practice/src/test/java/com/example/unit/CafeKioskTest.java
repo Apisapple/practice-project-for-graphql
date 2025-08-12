@@ -4,7 +4,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.example.unit.beverage.Americano;
+import com.example.unit.order.Order;
+
 import static org.assertj.core.api.AssertionsForClassTypes.*;
+
+import java.time.LocalDateTime;
 
 class CafeKioskTest {
 
@@ -24,18 +28,33 @@ class CafeKioskTest {
 	}
 
 	@Test
-	void remove() {
+	void addSeveralBeverage() {
+		CafeKiosk cafeKiosk = new CafeKiosk();
+		Americano americano = new Americano();
+
+		cafeKiosk.add(americano);
+
+		assertThat(cafeKiosk.getBeverages().size()).isEqualTo(1);
 	}
 
 	@Test
-	void clear() {
+	void createOrderOpenTime() {
+		CafeKiosk cafeKiosk = new CafeKiosk();
+		cafeKiosk.add(new Americano());
+
+		Order order = cafeKiosk.createOrder(LocalDateTime.of(2025, 8, 13, 10, 0));
+
+		assertThat(order).isNotNull();
+		assertThat(order.getBeverages().get(0).getName()).isEqualTo("Americano");
 	}
 
 	@Test
-	void calculateTotalPrice() {
-	}
+	void createOrderOutsideOpenTime() {
+		CafeKiosk cafeKiosk = new CafeKiosk();
+		cafeKiosk.add(new Americano());
 
-	@Test
-	void createOrder() {
+		assertThatThrownBy(() -> cafeKiosk.createOrder(LocalDateTime.of(2025, 8, 13, 9, 59)))
+				.isInstanceOf(IllegalStateException.class)
+				.hasMessage("The shop is closed.");
 	}
 }
