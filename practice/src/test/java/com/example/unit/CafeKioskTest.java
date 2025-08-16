@@ -1,6 +1,7 @@
 package com.example.unit;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import com.example.unit.beverage.Americano;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 class CafeKioskTest {
 
 	@Test
+	@DisplayName("음료 1개를 추가하면 주문 목록에 담긴다.")
 	void add() {
 		CafeKiosk cafeKiosk = new CafeKiosk();
 		cafeKiosk.add(new Americano());
@@ -21,6 +23,7 @@ class CafeKioskTest {
 	}
 
 	@Test
+	@DisplayName("음료 1개를 수동으로 추가하면 주문 목록에 담긴다.")
 	void addManualTest() {
 		CafeKiosk cafeKiosk = new CafeKiosk();
 		cafeKiosk.add(new Americano());
