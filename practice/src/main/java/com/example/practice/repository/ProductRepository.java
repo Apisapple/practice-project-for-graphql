@@ -12,4 +12,6 @@ import com.example.practice.domain.entity.ProductSellingStatus;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
 	List<Product> findBySellingStatusIn(List<ProductSellingStatus> sellingTypes);
+
+	List<Product> findAllBySellingStatus(ProductSellingStatus sellingStatus);
 }
