@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum ProductSellingType {
+public enum ProductSellingStatus {
 
   SELLING("판매중"),
   HOLD("보류중"),
@@ -15,7 +15,7 @@ public enum ProductSellingType {
 
   private final String description;
 
-  public static List<ProductSellingType> forDisplay() {
+	public static List<ProductSellingStatus> forDisplay() {
     return List.of(SELLING, HOLD);
   }
 }

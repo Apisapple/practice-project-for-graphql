@@ -1,7 +1,7 @@
 package com.example.practice.api.service.product.response;
 
 import com.example.practice.domain.entity.Product;
-import com.example.practice.domain.entity.ProductSellingType;
+import com.example.practice.domain.entity.ProductSellingStatus;
 import com.example.practice.domain.entity.ProductType;
 
 import lombok.Builder;
@@ -16,14 +16,15 @@ public class ProductResponse {
 
   private ProductType type;
 
-  private ProductSellingType sellingType;
+	private ProductSellingStatus sellingType;
 
   private String name;
 
   private int price;
 
   @Builder
-  private ProductResponse(Long id, String productNumber, ProductType type, ProductSellingType sellingType, String name,
+  private ProductResponse(Long id, String productNumber, ProductType type, ProductSellingStatus sellingType,
+		  String name,
       int price) {
     this.id = id;
     this.productNumber = productNumber;
@@ -38,7 +39,7 @@ public class ProductResponse {
         .id(product.getId())
         .productNumber(product.getProductNumber())
         .type(product.getType())
-        .sellingType(product.getSellingType())
+		    .sellingType(product.getSellingStatus())
         .name(product.getName())
         .price(product.getPrice())
         .build();
