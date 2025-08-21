@@ -1,4 +1,4 @@
-package com.example.practice.domain.entity;
+package com.example.practice.domain.product;
 
 import java.util.List;
 

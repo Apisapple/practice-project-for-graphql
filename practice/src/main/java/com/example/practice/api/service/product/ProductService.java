@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.practice.api.service.product.response.ProductResponse;
-import com.example.practice.domain.entity.Product;
-import com.example.practice.domain.entity.ProductSellingStatus;
+import com.example.practice.domain.product.Product;
+import com.example.practice.domain.product.ProductSellingStatus;
 import com.example.practice.repository.ProductRepository;
 
 import lombok.RequiredArgsConstructor;

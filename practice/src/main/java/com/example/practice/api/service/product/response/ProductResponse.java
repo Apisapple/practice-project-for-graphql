@@ -1,8 +1,8 @@
 package com.example.practice.api.service.product.response;
 
-import com.example.practice.domain.entity.Product;
-import com.example.practice.domain.entity.ProductSellingStatus;
-import com.example.practice.domain.entity.ProductType;
+import com.example.practice.domain.product.Product;
+import com.example.practice.domain.product.ProductSellingStatus;
+import com.example.practice.domain.product.ProductType;
 
 import lombok.Builder;
 import lombok.Getter;
