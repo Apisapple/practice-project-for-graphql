@@ -1,6 +1,6 @@
 package com.example.practice.api.service.order;
 
-import com.example.practice.api.controller.order.request.OrderCreateRequest;
+import com.example.practice.api.service.order.request.OrderCreateServiceRequest;
 import com.example.practice.api.service.order.response.OrderResponse;
 import com.example.practice.domain.order.Order;
 import com.example.practice.domain.order.OrderRepository;
@@ -31,7 +31,8 @@ public class OrderService {
 	 * 재고 문제 -> 동시성 고민 필요
 	 * optimistic lock / pessimistic lock / ...
 	 */
-	public OrderResponse createOrder(OrderCreateRequest request, LocalDateTime registeredDateTime) {
+    public OrderResponse createOrder(OrderCreateServiceRequest request,
+        LocalDateTime registeredDateTime) {
 		List<String> productNumbers = request.getProductNumbers();
 		List<Product> products = findProductsBy(productNumbers);
 

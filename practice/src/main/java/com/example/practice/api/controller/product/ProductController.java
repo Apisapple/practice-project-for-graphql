@@ -20,15 +20,17 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProductController {
 
-	private final ProductService productService;
+private final ProductService productService;
 
-	@GetMapping("api/v1/products/selling")
-	public List<ProductResponse> getSellingProducts() {
-		return productService.getSellingProducts();
-	}
+    @GetMapping("api/v1/products/selling")
+    public List<ProductResponse> getSellingProducts() {
+        return productService.getSellingProducts();
+    }
 
-	@PostMapping("api/v1/products/new")
-	public ApiResponse<ProductResponse> createProduct(@Valid @RequestBody ProductCreateRequest request) {
-		return ApiResponse.of(HttpStatus.OK, HttpStatus.OK.name(), productService.createProduct(request));
-	}
+    @PostMapping("api/v1/products/new")
+    public ApiResponse<ProductResponse> createProduct(
+        @Valid @RequestBody ProductCreateRequest request) {
+        return ApiResponse.of(HttpStatus.OK, HttpStatus.OK.name(),
+            productService.createProduct(request));
+    }
 }
