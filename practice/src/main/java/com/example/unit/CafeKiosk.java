@@ -13,33 +13,35 @@ import lombok.Getter;
 @Getter
 public class CafeKiosk {
 
-	private static final LocalTime SHOP_OPEN_TIME = LocalTime.of(10, 0);
-	private static final LocalTime SHOP_CLOSE_TIME = LocalTime.of(22, 0);
-	private List<Beverage> beverages = new ArrayList<>();
+    private static final LocalTime SHOP_OPEN_TIME = LocalTime.of(10, 0);
+    private static final LocalTime SHOP_CLOSE_TIME = LocalTime.of(22, 0);
+    private List<Beverage> beverages = new ArrayList<>();
 
-	public void add(Beverage beverage) {
-		beverages.add(beverage);
-	}
+    public void add(Beverage beverage) {
+        beverages.add(beverage);
+    }
 
-	public void remove(Beverage beverage) {
-		beverages.remove(beverage);
-	}
+    public void remove(Beverage beverage) {
+        beverages.remove(beverage);
+    }
 
-	public void clear() {
-		beverages.clear();
-	}
+    public void clear() {
+        beverages.clear();
+    }
 
-	public int calculateTotalPrice() {
-		return this.beverages.stream().mapToInt(Beverage::getPrice).sum();
-	}
+    public int calculateTotalPrice() {
+        return this.beverages.stream()
+            .mapToInt(Beverage::getPrice)
+            .sum();
+    }
 
-	public Order createOrder(LocalDateTime now) {
+    public Order createOrder(LocalDateTime now) {
 
-		LocalTime currentTime = now.toLocalTime();
-		if (currentTime.isBefore(SHOP_OPEN_TIME) || currentTime.isAfter(SHOP_CLOSE_TIME)) {
-			throw new IllegalStateException("The shop is closed.");
-		}
+        LocalTime currentTime = now.toLocalTime();
+        if (currentTime.isBefore(SHOP_OPEN_TIME) || currentTime.isAfter(SHOP_CLOSE_TIME)) {
+            throw new IllegalStateException("The shop is closed.");
+        }
 
-		return new Order(now, beverages);
-	}
+        return new Order(now, beverages);
+    }
 }

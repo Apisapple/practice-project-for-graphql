@@ -41,16 +41,19 @@ class ProductServiceTest {
         Product product = createProduct("001", HANDMADE, SELLING, "아메리카노", 4000);
         productRepository.save(product);
 
-        ProductCreateRequest request =
-            ProductCreateRequest
-                .builder().type(HANDMADE).sellingStatus(SELLING).name("카푸치노").price(5000).build();
+        ProductCreateRequest request = ProductCreateRequest.builder()
+            .type(HANDMADE)
+            .sellingStatus(SELLING)
+            .name("카푸치노")
+            .price(5000)
+            .build();
 
         // when
         ProductResponse productResponse = productService.createProduct(request);
 
         // then
-        assertThat(productResponse)
-            .extracting("productNumber", "type", "sellingStatus", "name", "price")
+        assertThat(productResponse).extracting("productNumber", "type", "sellingStatus", "name",
+                "price")
             .contains("002", HANDMADE, SELLING, "카푸치노", 5000);
 
         List<Product> products = productRepository.findAll();
@@ -61,11 +64,13 @@ class ProductServiceTest {
     }
 
     private Product createProduct(String productNumber, ProductType type,
-        ProductSellingStatus sellingStatus, String name,
-        int price) {
-        return Product
-            .builder().productNumber(productNumber).type(type).sellingStatus(sellingStatus)
+        ProductSellingStatus sellingStatus, String name, int price) {
+        return Product.builder()
+            .productNumber(productNumber)
+            .type(type)
+            .sellingStatus(sellingStatus)
             .name(name)
-            .price(price).build();
+            .price(price)
+            .build();
     }
 }
