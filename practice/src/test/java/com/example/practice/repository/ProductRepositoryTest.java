@@ -1,19 +1,20 @@
 package com.example.practice.repository;
 
+import static com.example.practice.domain.product.ProductSellingStatus.HOLD;
+import static com.example.practice.domain.product.ProductSellingStatus.SELLING;
+import static com.example.practice.domain.product.ProductSellingStatus.STOP_SELLING;
+import static com.example.practice.domain.product.ProductType.HANDMADE;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.tuple;
+
 import com.example.practice.domain.product.Product;
 import com.example.practice.domain.product.ProductRepository;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
-
-import java.util.List;
-
-import static com.example.practice.domain.product.ProductSellingStatus.*;
-import static com.example.practice.domain.product.ProductType.*;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.tuple;
 
 @DataJpaTest
 @ActiveProfiles("test")
